@@ -15,8 +15,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   // text editing controllers
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   // sign user in method
   void signUserUp() async {
@@ -31,10 +31,17 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     // try creating the user
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      //check if password is confirmed
+      if (passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+      } else {
+        // show error message
+        showErrorMessage("Passwords don't match");
+      }
+
       // pop the loading circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -112,29 +119,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 10),
 
-                // confirmp assword textfield
+                // confirm password textfield
                 MyTextField(
-                  controller: passwordController,
+                  controller: confirmPasswordController,
                   hintText: 'Confirm Password',
                   obscureText: true,
                 ),
 
-                const SizedBox(height: 10),
-
-                /*// forgot password?
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                    ],
-                  ),
-                ),
-                */
                 const SizedBox(height: 25),
 
                 // sign in button
