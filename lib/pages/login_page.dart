@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
-zrdz
+
   // sign user in method
   void signUserIn() async {
     // show loading circle
@@ -130,6 +130,7 @@ zrdz
 
                 // sign in button
                 MyButton(
+                  text: "Sign In!",
                   onTap: signUserIn,
                 ),
 

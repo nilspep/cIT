@@ -78,14 +78,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 // logo
                 const Icon(
                   Icons.lock,
-                  size: 100,
+                  size: 50,
                 ),
 
                 const SizedBox(height: 25),
 
-                // welcome back, you've been missed!
+                // Let\'s create an accoutn for you
                 Text(
-                  'Welcome back you\'ve been missed!',
+                  'Let\'s create an accoutn for you!',
                   style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 16,
@@ -110,7 +110,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   obscureText: true,
                 ),
 
-                // confirmpassword textfield
+                const SizedBox(height: 10),
+
+                // confirmp assword textfield
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Confirm Password',
@@ -119,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 10),
 
-                // forgot password?
+                /*// forgot password?
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -132,11 +134,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                 ),
-
+                */
                 const SizedBox(height: 25),
 
                 // sign in button
                 MyButton(
+                  text: "Sign Up!",
                   onTap: signUserUp,
                 ),
 
