@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:modernlogintute/pages/login_or_register_page.dart';
 import 'package:modernlogintute/pages/login_page.dart';
 
 import 'home_page.dart';
@@ -20,7 +21,7 @@ class AuthPage extends StatelessWidget {
 
         // user is not logged in
         else {
-          return LoginPage();
+          return LoginOrRegisterPage();
         }
       },
     ));
